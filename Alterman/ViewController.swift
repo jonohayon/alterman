@@ -8,20 +8,22 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSTextStorageDelegate {
+  @IBOutlet var textView: NSTextView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // Do any additional setup after loading the view.
+    self.textView.isEditable = true
+    self.textView.isSelectable = true
+    self.textView.baseWritingDirection = .rightToLeft
+    self.textView.userInterfaceLayoutDirection = .rightToLeft
+    self.textView.textStorage!.delegate = self
   }
 
   override var representedObject: Any? {
     didSet {
-    // Update the view, if already loaded.
+      // Update the view, if already loaded.
     }
   }
-
-
 }
 
