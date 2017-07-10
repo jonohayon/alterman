@@ -15,17 +15,19 @@ protocol Font {
   var regular: String { get }
   var semiBold: String { get }
   var bold: String { get }
+  var extraBold: String? { get }
 }
 
 struct Fonts {
   struct assistant: Font {
     static var name: String = "Assistant"
 
-    var extraLight = "\(Fonts.assistant.name)-ExtraLight"
-    var light = "\(Fonts.assistant.name)-Light"
-    var regular = "\(Fonts.assistant.name)-Regular"
-    var semiBold = "\(Fonts.assistant.name)-SemiBold"
-    var bold = "\(Fonts.assistant.name)-Bold"
+    var extraLight: String = "\(Fonts.assistant.name)-ExtraLight"
+    var light: String = "\(Fonts.assistant.name)-Light"
+    var regular: String = "\(Fonts.assistant.name)-Regular"
+    var semiBold: String = "\(Fonts.assistant.name)-SemiBold"
+    var bold: String = "\(Fonts.assistant.name)-Bold"
+    var extraBold: String? = "\(Fonts.assistant.name)-ExtraBold"
   }
 
   struct firaCode: Font {
@@ -36,6 +38,7 @@ struct Fonts {
     var regular: String = "\(Fonts.firaCode.name)-Regular"
     var semiBold: String = "\(Fonts.firaCode.name)-Medium"
     var bold: String = "\(Fonts.firaCode.name)-Bold"
+    var extraBold: String? = nil
   }
 }
 
@@ -49,20 +52,24 @@ class FontManager {
     self.monospace = monospace
   }
 
-  func title () -> NSFont {
+  func section () -> NSFont {
+    return NSFont(name: self.font.extraBold!, size: 22)!
+  }
+
+  func subsection () -> NSFont {
     return NSFont(name: self.font.bold, size: 18)!
   }
 
-  func subtitle () -> NSFont {
-    return NSFont(name: self.font.semiBold, size: 15)!
+  func subsubsection () -> NSFont {
+    return NSFont(name: self.font.semiBold, size: 16)!
   }
 
   func body () -> NSFont {
-    return NSFont(name: self.font.regular, size: 14)!
+    return NSFont(name: self.font.regular, size: 15)!
   }
 
   func latex () -> NSFont {
-    return NSFont(name: self.monospace.regular, size: 14)!
+    return NSFont(name: self.monospace.light, size: 15)!
   }
 
   static func printFonts (of family: String = "") {

@@ -16,10 +16,11 @@ class AlterMarkdown {
     ("^###( |)(.*)$", { .subsubsection($0) }),
     ("^##( |)(.*)$", { .subsection($0) }),
     ("^#( |)(.*)$", { .section($0) }),
-    ("^\\$\\$([^$]*)\\$\\$", { .latex($0) }),
+    (AlterMarkdown.latexLineRegex, { .latexLine($0) }),
     ("\\*(?![\n\t ])[^*](?![\n\t ])\\*", { .bold($0) }),
     ("_([^_]*)_", { .italic($0) })
   ]
+  fileprivate static let latexLineRegex = "^\\$([^$]*)\\$"
 
   static func lex (line: String) -> [AlterToken] {
     var tokens: [AlterToken] = []
@@ -48,14 +49,24 @@ class AlterMarkdown {
     return tokens
   }
 
+  static func rangeHasLatex (text: String, range: NSRange) -> Bool {
+    let newRange = text.createRange(range: range)
+    let substring = text[newRange]
+    let expression = try! NSRegularExpression(pattern: AlterMarkdown.latexLineRegex, options: [])
+    if let _ = expression.firstMatch(in: substring, options: [], range: range) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   fileprivate static func lexToken (content: String, pattern: String, tokenGen: TokenGenerator) -> (AlterToken?, String.Index)? {
     let expression = try! NSRegularExpression(pattern: "\(pattern)", options: [])
     let range = NSMakeRange(0, content.utf16.count)
     if let m = expression.firstMatch(in: content, options: [], range: range) {
-      let startIndex = content.index(content.startIndex, offsetBy: m.range.location)
-      let endIndex = content.index(startIndex, offsetBy: m.range.length)
-      let matched = content[startIndex..<endIndex]
-      return (token: tokenGen(matched), index: endIndex)
+      let range = content.createRange(range: m.range)
+      let matched = content[range]
+      return (token: tokenGen(matched), index: range.upperBound)
     } else {
       return nil
     }

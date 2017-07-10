@@ -20,6 +20,9 @@
 		A562E4D01F0FEF8D00976398 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A562E4CF1F0FEF8D00976398 /* FontManager.swift */; };
 		A562E4D21F10259900976398 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A562E4D11F10259900976398 /* Extensions.swift */; };
 		A562E4D41F1025F800976398 /* TestFile.xml in Resources */ = {isa = PBXBuildFile; fileRef = A562E4D31F1025F800976398 /* TestFile.xml */; };
+		A5CDCCF81F1408D1009FDDDF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDCCF71F1408D1009FDDDF /* ThemeManager.swift */; };
+		A5CDCCFA1F1410F0009FDDDF /* AltermanLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDCCF91F1410F0009FDDDF /* AltermanLayoutManager.swift */; };
+		A5CDCCFC1F14161E009FDDDF /* AltermanWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDCCFB1F14161E009FDDDF /* AltermanWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		A562E4CF1F0FEF8D00976398 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		A562E4D11F10259900976398 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A562E4D31F1025F800976398 /* TestFile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestFile.xml; sourceTree = "<group>"; };
+		A5CDCCF71F1408D1009FDDDF /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		A5CDCCF91F1410F0009FDDDF /* AltermanLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltermanLayoutManager.swift; sourceTree = "<group>"; };
+		A5CDCCFB1F14161E009FDDDF /* AltermanWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AltermanWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +99,12 @@
 				A51136811F122C7F00ACD0D9 /* Tokens.swift */,
 			);
 			name = Altermarkdown;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A562E4961F0FDE1400976398 = {
 			isa = PBXGroup;
 			children = (
-				A511367E1F122C4900ACD0D9 /* Altermarkdown */,
 				A562E4A11F0FDE1400976398 /* Alterman */,
 				A562E4B51F0FDE1500976398 /* AltermanTests */,
 				A562E4C01F0FDE1500976398 /* AltermanUITests */,
@@ -121,13 +127,15 @@
 			children = (
 				A562E4A21F0FDE1400976398 /* AppDelegate.swift */,
 				A562E4A41F0FDE1400976398 /* ViewController.swift */,
-				A511367C1F1221BA00ACD0D9 /* AltermanTextView.swift */,
+				A5CDCCFE1F14164A009FDDDF /* Managers */,
+				A5CDCCFD1F141639009FDDDF /* Text Handling */,
+				A511367E1F122C4900ACD0D9 /* Altermarkdown */,
 				A562E4A61F0FDE1400976398 /* Document.swift */,
 				A562E4A81F0FDE1400976398 /* Assets.xcassets */,
 				A562E4AA1F0FDE1400976398 /* Main.storyboard */,
 				A562E4AD1F0FDE1400976398 /* Info.plist */,
-				A562E4CF1F0FEF8D00976398 /* FontManager.swift */,
 				A562E4D11F10259900976398 /* Extensions.swift */,
+				A5CDCCFB1F14161E009FDDDF /* AltermanWindowController.swift */,
 				A562E4D31F1025F800976398 /* TestFile.xml */,
 			);
 			path = Alterman;
@@ -149,6 +157,24 @@
 				A562E4C31F0FDE1500976398 /* Info.plist */,
 			);
 			path = AltermanUITests;
+			sourceTree = "<group>";
+		};
+		A5CDCCFD1F141639009FDDDF /* Text Handling */ = {
+			isa = PBXGroup;
+			children = (
+				A511367C1F1221BA00ACD0D9 /* AltermanTextView.swift */,
+				A5CDCCF91F1410F0009FDDDF /* AltermanLayoutManager.swift */,
+			);
+			name = "Text Handling";
+			sourceTree = "<group>";
+		};
+		A5CDCCFE1F14164A009FDDDF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A562E4CF1F0FEF8D00976398 /* FontManager.swift */,
+				A5CDCCF71F1408D1009FDDDF /* ThemeManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,11 +314,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CDCCFC1F14161E009FDDDF /* AltermanWindowController.swift in Sources */,
 				A562E4D21F10259900976398 /* Extensions.swift in Sources */,
+				A5CDCCFA1F1410F0009FDDDF /* AltermanLayoutManager.swift in Sources */,
 				A51136801F122C5700ACD0D9 /* Lexer.swift in Sources */,
 				A562E4A51F0FDE1400976398 /* ViewController.swift in Sources */,
 				A51136821F122C7F00ACD0D9 /* Tokens.swift in Sources */,
 				A562E4A31F0FDE1400976398 /* AppDelegate.swift in Sources */,
+				A5CDCCF81F1408D1009FDDDF /* ThemeManager.swift in Sources */,
 				A562E4D01F0FEF8D00976398 /* FontManager.swift in Sources */,
 				A562E4A71F0FDE1400976398 /* Document.swift in Sources */,
 				A511367D1F1221BA00ACD0D9 /* AltermanTextView.swift in Sources */,

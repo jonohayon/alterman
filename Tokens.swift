@@ -14,8 +14,14 @@ enum AlterToken {
   case subsubsection (String)
   case bold (String)
   case italic (String)
-  case latex (String)
+  case latexLine (String)
   case comment (String)
   case char (String) // All the other characters
   case newline
+}
+
+enum SectionType {
+  case section
+  case subsection
+  case subsubsection
 }
